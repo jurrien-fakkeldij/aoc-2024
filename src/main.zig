@@ -32,5 +32,5 @@ pub fn main() !void {
         }
     }
 
-    try Solver.solve(day);
+    try Solver.solve(allocator, day);
 }

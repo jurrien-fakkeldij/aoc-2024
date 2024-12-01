@@ -9,13 +9,13 @@ pub const Day1 = struct {
         \\3   3
     ;
 
-    pub fn solve(input: [:0]const u8) !void {
+    pub fn solve(input: []const u8) !void {
         std.debug.print("Solving Day 1\n", .{});
         try solvePart1(input);
         try solvePart2(input);
     }
 
-    fn solvePart1(input: [:0]const u8) !void {
+    fn solvePart1(input: []const u8) !void {
         std.debug.print("Part 1\n", .{});
 
         const total_test: u32 = try findDistance(test_input);
@@ -25,7 +25,7 @@ pub const Day1 = struct {
         std.debug.print("answer: {d} \n", .{total});
     }
 
-    fn findDistance(input: [:0]const u8) !u32 {
+    fn findDistance(input: []const u8) !u32 {
         var tokens = std.mem.tokenizeAny(u8, input, " \n");
 
         var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -57,7 +57,7 @@ pub const Day1 = struct {
         return total;
     }
 
-    fn findSimilarityScore(input: [:0]const u8) !i32 {
+    fn findSimilarityScore(input: []const u8) !i32 {
         var tokens = std.mem.tokenizeAny(u8, input, " \n");
 
         var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -87,7 +87,7 @@ pub const Day1 = struct {
         return total_score;
     }
 
-    fn solvePart2(input: [:0]const u8) !void {
+    fn solvePart2(input: []const u8) !void {
         std.debug.print("Part 2\n", .{});
         const total_test: i32 = try findSimilarityScore(test_input);
         std.debug.print("test: {d} \n", .{total_test});
