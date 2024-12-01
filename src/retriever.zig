@@ -2,7 +2,7 @@ const std = @import("std");
 const http = std.http;
 
 pub const Retriever = struct {
-    pub fn get(day: u32) ![]const u8 {
+    pub fn get(day: u32) ![:0]const u8 {
         // Create a general purpose allocator
         var gpa = std.heap.GeneralPurposeAllocator(.{}){};
         const allocator = gpa.allocator();
@@ -41,9 +41,11 @@ pub const Retriever = struct {
         try req.wait();
 
         var rdr = req.reader();
-        const body = try rdr.readAllAlloc(gpa.allocator(), 1024 * 1024 * 4);
+        const body: []const u8 = try rdr.readAllAlloc(gpa.allocator(), 1024 * 1024 * 4);
         // std.debug.print("response={s}\n", .{body});
         // std.debug.print("status={d}\n", .{req.response.status}); // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-        return body;
+        var bodyArrList = std.ArrayList(u8).init(gpa.allocator());
+        try bodyArrList.appendSlice(body);
+        return bodyArrList.toOwnedSliceSentinel(0);
     }
 };
