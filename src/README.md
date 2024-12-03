@@ -7,8 +7,12 @@ AOCSESSION=%YOURSESSIONKEY% zig run src/main.zig -- --day #
 Where # is the number of the day you are trying to solve.
 
 
+```bash
+AOCSESSION=%YOURSESSIONKEY% zig run src/main.zig -- --all
+```
+To solve all days :)
+
 ## TODO
-- Solve for all days
 - Make it so you can also solve all the available days instead of just one.
 - Add preqrequisits (well only zig is required from https://ziglang.org/)
 
