@@ -54,32 +54,6 @@ pub const Day3 = struct {
                 }
             }
         }
-        // var tok = std.zig.Tokenizer.init(test_input);
-        // var toke = tok.next();
-        // while (toke.tag != .eof) {
-        //     tok.dump(&toke);
-        //     toke = tok.next();
-        // }
-        // var total: u32 = 0;
-        // mul: while (app.next()) |token| {
-        // app.
-        //     std.debug.print("token: {s}\n", .{token});
-        //     var nums = std.mem.tokenizeAny(u8, token, ",");
-        //     var list = std.ArrayList([]const u8).init(allocator);
-        //     defer list.deinit();
-        //
-        //     while (nums.next()) |num| {
-        //         try list.append(num);
-        //     }
-        //
-        //     if (list.items.len != 2) {
-        //         continue :mul;
-        //     }
-        //     const first = std.fmt.parseInt(u32, list.items[0], 10) catch continue :mul;
-        //     const second = std.fmt.parseInt(u32, list.items[1], 10) catch continue :mul;
-        //     std.debug.print("correct?: {s}\n", .{token});
-        //     total += first * second;
-        // }
         return total;
     }
 
