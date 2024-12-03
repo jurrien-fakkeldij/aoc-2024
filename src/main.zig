@@ -26,6 +26,10 @@ pub fn main() !void {
             continue;
         }
 
+        if (std.mem.eql(u8, arg, "--all")) {
+            day = 0;
+            break;
+        }
         if (nextIsDay) {
             day = try std.fmt.parseInt(u32, arg, 10);
             // std.debug.print("  Trying to retrieve day: {d}\n", .{day});
