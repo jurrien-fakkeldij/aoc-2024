@@ -20,6 +20,10 @@ pub fn main() !void {
     // std.debug.print("There are {d} args:\n", .{args.len});
     var nextIsDay = false;
     var day: u32 = 0;
+
+    const test_input = @as(u32, @intCast('9'));
+    std.debug.print("test:{d}\n", .{test_input});
+
     for (args) |arg| {
         if (std.mem.eql(u8, arg, "--day")) {
             nextIsDay = true;
