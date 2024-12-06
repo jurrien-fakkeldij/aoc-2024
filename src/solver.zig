@@ -6,6 +6,7 @@ const Day3 = @import("./days/day3.zig").Day3;
 const Day4 = @import("./days/day4.zig").Day4;
 const Day5 = @import("./days/day5.zig").Day5;
 const Day6 = @import("./days/day6.zig").Day6;
+const Day7 = @import("./days/day7.zig").Day7;
 
 pub const Solver = struct {
     pub fn solve(allocator: std.mem.Allocator, day: u32) !void {
@@ -45,6 +46,11 @@ pub const Solver = struct {
                 const input = try Retriever.get(allocator, day);
                 defer allocator.free(input);
                 try Day6.solve(input);
+            },
+            7 => {
+                const input = try Retriever.get(allocator, day);
+                defer allocator.free(input);
+                try Day7.solve(input);
             },
             else => std.debug.print("Did not find the specified day to solve yet. Day {d} is not solvable yet, has this day already come out or did my creator (slacker) did not create the solution yet.\n", .{day}),
         }
