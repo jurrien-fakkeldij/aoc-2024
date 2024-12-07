@@ -4,22 +4,23 @@ const Calibration = struct {
     numbers: []i64,
     pub fn isPossible(self: Calibration, withExtraCheck: bool) bool {
         if (withExtraCheck) {
-            return isEqualWithConcat(self.outcome, 0, self.numbers);
+            return isEqual(self.outcome, self.numbers) or isEqualWithConcat(self.outcome, 0, self.numbers);
         }
-        return isEqual(self.outcome, self.numbers, withExtraCheck);
+        return isEqual(self.outcome, self.numbers);
     }
 
-    fn isEqual(outcome: i64, numbers: []i64, withExtraCheck: bool) bool {
+    fn isEqual(outcome: i64, numbers: []i64) bool {
         if (numbers.len == 1) {
             return outcome == numbers[0];
         }
         const i: usize = numbers.len - 1;
 
         const division = std.math.divExact(i64, outcome, numbers[i]) catch {
-            return isEqual(outcome - numbers[i], numbers[0..i], withExtraCheck);
+            return isEqual(outcome - numbers[i], numbers[0..i]);
         };
-        return isEqual(outcome - numbers[i], numbers[0..i], withExtraCheck) or isEqual(division, numbers[0..i], withExtraCheck);
+        return isEqual(outcome - numbers[i], numbers[0..i]) or isEqual(division, numbers[0..i]);
     }
+
     fn isEqualWithConcat(outcome: i64, acc: i64, numbers: []i64) bool {
         if (numbers.len == 1) {
             const con = concatNumbers(acc, numbers[0]) catch {
