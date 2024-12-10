@@ -94,7 +94,7 @@ pub const Day9 = struct {
             switch (item) {
                 .empty => {
                     // std.debug.print(".", .{});
-                    std.debug.print("idx:{d}", .{idx});
+                    continue;
                 },
                 .id => {
                     // std.debug.print("{d}", .{item.id});
